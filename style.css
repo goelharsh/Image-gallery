@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.wrapper{
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container{
+    height: 100%;
+    max-width: 1200px;
+    /* 0 auto means left right ka margin equal rkh dia baki auto kr dia */
+    margin: 0 auto;
+    padding:20px;
+}
+
+.container h1{
+    margin: 20px 0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+
+
+.gallery{
+    display: flex;
+
+    /* flex krne ke baad yha per sari photos horizontally aa jayegi per hmne overflow x diretions me hidden kr rkha hai so that why we have to flex it as wrap  */
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    /* 32 isliye ki keuki hmne 3 photos rakhni hai or baki 32+32+32 and baki ka 4 space bhi to hai vo baki space ke liye use ho jayega */
+    width: 32%;
+
+    /* text overlap krna hai to absolute use krte hain */
+   /* or absolute vha hoti hai jha near ancestor non static ho */
+   /* so it means jiska hme ovelap krna uska parent relative hona chahiye */
+    position: relative;
+
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+/* 1. */
+/* margin:12x 16px 20px 24px */
+/* top right bottom left  */
+
+
+/* 2. */
+/* margin: 25px 50px; */
+/* top and bottom margins are 25px */
+/* left and right marign are 50px */
+
+.card img{
+    /* sqaure shape krne ke liye */
+    width: 100%;
+    height: 100%;
+    filter: grayscale();
+
+    box-shadow: 0 0 20px #333;
+
+    /* not much important */
+    /* object-fit: cover; */
+
+}
+
+
+.card:hover{
+    /* hover krte hi card bda ho jaye */
+    transform: scale(1.03);
+
+    /* isse card ke piche ek shadow aa jayegi */
+    filter: drop-shadow(0 0 10px #333);
+
+    transition: 0.3s;
+  
+}
+
+.card:hover img{
+    /* hover krke img pe dubara se color vapis aa jane chahiye */
+    filter: grayscale(0%);
+
+}
+
+.card figcaption{
+    position: absolute;   
+
+    /* figcaption ka parent card hai, so card ka 100% width and 20 height figcaption le lega; */
+    width: 100%;
+    height: 20%;
+
+
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    opacity: 0;
+
+
+    border-radius: 0 0 10px 10px ;
+    background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0)) 100%;
+
+
+}
+
+.card:hover figcaption{
+    opacity: 1;
+    transform: scale(1.03);
+}
